@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="52a212c6-641a-4ef3-9465-b41dca460172" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/LukuLuku.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LukuLuku.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deviceManager.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/planningMode.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android-credentials/KEYSTORE-INFO.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android-credentials/KEYSTORE-INFO.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/proguard-rules.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/debug/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/debugOptimized/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/debugOptimized/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/online/lukuluku/app/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/online/lukuluku/app/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/online/lukuluku/app/MainApplication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/online/lukuluku/app/MainApplication.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable/rn_edit_text_material.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable/rn_edit_text_material.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.json.backup" beforeDir="false" afterPath="$PROJECT_DIR$/app.json.backup" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/AppImage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/AppImage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/AuthPromptModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/AuthPromptModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/CommunitySafetyTools.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/CommunitySafetyTools.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/LinkedText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/LinkedText.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/PreRollAd.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/PreRollAd.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/RankAuraAvatar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/RankAuraAvatar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/SponsoredAdCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/SponsoredAdCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/VerifiedBadge.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/VerifiedBadge.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/VideoCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/VideoCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/VideoInteractionLayers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/VideoInteractionLayers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/games/ColorMatchGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/games/ColorMatchGame.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/games/MemoryGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/games/MemoryGame.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/games/QuizGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/games/QuizGame.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/games/TapSpeedGame.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/games/TapSpeedGame.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/convex/_generated/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/convex/_generated/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/convex/_generated/dataModel.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/convex/_generated/dataModel.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/convex/_generated/server.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/convex/_generated/server.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/convex/_generated/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/convex/_generated/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/convex/adConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/convex/adConfig.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/convex/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/convex/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/convex/games.ts" beforeDir="false" afterPath="$PROJECT_DIR$/convex/games.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/convex/moderation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/convex/moderation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/convex/notifications.ts" beforeDir="false" afterPath="$PROJECT_DIR$/convex/notifications.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/convex/schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/convex/schema.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/convex/wallets.ts" beforeDir="false" afterPath="$PROJECT_DIR$/convex/wallets.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useActiveAds.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useActiveAds.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/useRankBadges.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/useRankBadges.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/auth.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/communitySafety.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/communitySafety.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/convexStub.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/convexStub.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/i18n.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/i18n.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/supabase.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/supabase.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/theme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/theme.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/tracking.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/tracking.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/vastParser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/vastParser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/AdvertiseScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/AdvertiseScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/BangiPostScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/BangiPostScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/ChannelScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ChannelScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/CreatePostScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CreatePostScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/CreateScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CreateScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/GamePlayScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/GamePlayScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/GamesScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/GamesScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/HomeScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/LeaderboardsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/LeaderboardsScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/NotificationsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/NotificationsScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/ProfileScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ProfileScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/SearchScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/SearchScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/ShortsScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/ShortsScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/VideoPlayerScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/VideoPlayerScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/WebViewScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/WebViewScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/APPLE_4.7.4_REVIEW_NOTES.md" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/APPLE_4.7.4_REVIEW_NOTES.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/apple-client-secret.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/apple-client-secret.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/make-appstore-screenshots.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/make-appstore-screenshots.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/make-ipad-from-real.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/make-ipad-from-real.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/transcode-hevc.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/transcode-hevc.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/supabase/functions/delete-account/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/supabase/functions/delete-account/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/supabase_complete_migration.sql" beforeDir="false" afterPath="$PROJECT_DIR$/supabase_complete_migration.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/supabase_migrations.sql" beforeDir="false" afterPath="$PROJECT_DIR$/supabase_migrations.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4,
+  "fromUser": false
+}]]></component>
+  <component name="ProjectId" id="3IjCfZWTeEv3Sw6flujvtHUufbC" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "expo-sdk-54-upgrade",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/alimaitlo/Downloads/LukuLuku",
+    "show.migrate.to.gradle.popup": "false"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="52a212c6-641a-4ef3-9465-b41dca460172" name="Changes" comment="" />
+      <created>1788268696194</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1788268696194</updated>
+    </task>
+    <servers />
+  </component>
+</project>

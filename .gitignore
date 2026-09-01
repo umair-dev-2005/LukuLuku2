@@ -1,0 +1,50 @@
+# =============================================================
+# LukuLuku — full backup repo (PRIVATE)
+#
+# Signing keys, certificates and env files are COMMITTED on purpose:
+#   android-credentials/, *.jks, *.p8, *.p12, *.pem, .env*
+# They are irreplaceable (Play Store upload key). Keep this repo private.
+#
+# Only regenerable output is ignored below.
+# =============================================================
+
+# ---- dependencies (reinstall: yarn install / npm install) ----
+node_modules/
+.yarn/cache/
+.yarn/unplugged/
+.yarn/install-state.gz
+
+# ---- Expo / JS build output ----
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+.metro-health-check*
+
+# ---- Android build output (regenerate: ./gradlew assemble) ----
+android/build/
+android/app/build/
+android/.gradle/
+android/.cxx/
+android/.kotlin/
+*.orig.*
+
+# ---- iOS build output (regenerate: pod install / xcodebuild) ----
+ios/build/
+ios/build_release/
+ios/Pods/
+ios/DerivedData/
+ios/*.xcworkspace/xcuserdata/
+ios/*.xcodeproj/xcuserdata/
+
+# ---- local db / logs ----
+*.sqlite
+*.sqlite3
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# ---- editor / OS junk ----
+.DS_Store
+.qodo/
+*.tsbuildinfo

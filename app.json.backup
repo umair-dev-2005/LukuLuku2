@@ -1,0 +1,88 @@
+{
+  "expo": {
+    "name": "LukuLuku",
+    "scheme": "lukuluku",
+    "slug": "lukuluku",
+    "version": "2.1.5",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "online.lukuluku.app",
+      "buildNumber": "5",
+      "usesAppleSignIn": true,
+      "associatedDomains": [
+        "applinks:lukuluku.online"
+      ]
+    },
+    "android": {
+      "package": "online.lukuluku.app",
+      "versionCode": 31,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "https",
+              "host": "lukuluku.online",
+              "pathPrefix": "/watch"
+            },
+            {
+              "scheme": "https",
+              "host": "lukuluku.online",
+              "pathPrefix": "/momenti"
+            },
+            {
+              "scheme": "https",
+              "host": "lukuluku.online",
+              "pathPrefix": "/post"
+            }
+          ],
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
+        }
+      ],
+      "permissions": [
+        "com.google.android.gms.permission.AD_ID"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "description": "Quickly generate React Native components with AI",
+    "plugins": [
+      "expo-font",
+      "expo-apple-authentication",
+      [
+        "expo-tracking-transparency",
+        {
+          "userTrackingPermission": "This identifier will be used to deliver and measure personalized ads to support the app."
+        }
+      ]
+    ],
+    "owner": "mairu",
+    "runtimeVersion": "1.0.0",
+    "updates": {
+      "url": "https://u.expo.dev/8d15115c-81d3-4e76-a845-c0d983729225"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "de2c47b5-12c9-4b4a-9a9b-236fb329bda1"
+      }
+    }
+  }
+}
