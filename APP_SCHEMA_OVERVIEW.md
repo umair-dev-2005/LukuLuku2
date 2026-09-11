@@ -147,6 +147,7 @@ CREATE POLICY "Users can update their own profile safe" ON public.profiles
 → You may edit your own profile but cannot change your own `is_admin`, `is_founder_team`, `is_monetized`, `is_verified`, `verification_type`, `standard_share_pct` or `bonus_share_pct` — each must stay equal to its stored value.
 
 **Triggers:** `update_profiles_updated_at` BEFORE UPDATE → `update_updated_at_column()` (stamps `updated_at = now()`).
+**Column-level grants (live DB, verified 2026-09-11):** explicit `SELECT` to `anon` and `authenticated` on all 18 columns — a column added later needs its own column grant (see *Column-level privileges*).
 **Related:** `handle_new_user()` fires on `auth.users` INSERT and inserts the `profiles` row (display name from `raw_user_meta_data`, falling back to the email local-part).
 
 ---
@@ -1191,7 +1192,7 @@ CREATE POLICY "Hosts can update their own live stream" ON public.live_streams
 CREATE POLICY "Hosts can delete their own live stream" ON public.live_streams
     AS PERMISSIVE FOR DELETE TO {public} USING ((auth.uid() = host_user_id));
 ```
-→ Host-only writes; `channel_id` is not checked against channel ownership. The host still inserts the row directly under this INSERT policy (then calls `live_stream_init`). **The host UPDATE policy also still lets a host set `status` directly**, which bypasses the end-of-stream work — see *Needs Confirmation*. The host DELETE policy remains, but see the RESTRICT consequence above.
+→ Host-only writes; `channel_id` is not checked against channel ownership. The host still inserts the row directly under this INSERT policy (then calls `live_stream_init`). **The host UPDATE policy also still lets a host set `status` (and the 01 metric columns) directly**, which bypasses the end-of-stream work — see *Needs Confirmation* #9. The host DELETE policy remains, but see the RESTRICT consequence above.
 
 Policies added by migration 01 (quoted as written in the migration file):
 
@@ -2208,8 +2209,9 @@ create or replace view public.broadcaster_public_points as
 
 Set to `security_invoker = false` (the PostgreSQL default; set explicitly), so it runs as its owner and
 reads past the owner-only RLS on the base table — **the column list is the security boundary**.
-`cash_balance` and `cash_currency` are deliberately omitted (column-level grants were considered
-unverified in this project); **never add a cash column here**. `GRANT SELECT` → anon, authenticated —
+`cash_balance` and `cash_currency` are deliberately omitted — the design does not rely on column-level
+grants to hide them (when migration 04 was written they were unverified; since checked, none exist on
+`broadcaster_earnings`, see *Column-level privileges*); **never add a cash column here**. `GRANT SELECT` → anon, authenticated —
 every broadcaster's points are publicly readable.
 
 ---
@@ -2248,7 +2250,7 @@ reported message can later be proven to be exactly what the gate let through.
 **Vault:** secret `live_chat_signing_key` (32 random bytes, hex) created once only if absent — re-running
 never rotates it (rotation would make pending signed reports unverifiable).
 
-**Functions** († = the migration grants EXECUTE but issues no `REVOKE` for this function — see *Needs Confirmation*)
+**Functions** († = the migration grants EXECUTE but issues no `REVOKE` for this function — see *Needs Confirmation* #10)
 
 | function | security | callable by | purpose |
 |---|---|---|---|
@@ -2692,6 +2694,57 @@ functions), carry no JWT, so `auth.uid()` is NULL inside them; the functions all
 rate-state rows older than a day — stale rows are harmless). No cron is needed for punishment expiry
 (evaluated at read time), for the share snapshot cache (refreshed lazily), or for chat retention (no chat is stored).
 
+**Pre-existing jobs** (not created by these migrations; read from `cron.job` on the live DB 2026-09-11 —
+names and schedules only, the commands were not pulled):
+
+| job | schedule |
+|---|---|
+| `telegram-broadcast-every-minute` | `* * * * *` (every minute) |
+| `telegram-poll-every-minute` | `* * * * *` (every minute) |
+| `notification-dispatcher-every-minute` | `* * * * *` (every minute) |
+| `fx-rate-daily` | `0 6 * * *` (daily 06:00 UTC) |
+
+> Verified 2026-09-11: `cron.job` holds **7 jobs** — the 4 above plus the 3 live-streaming jobs. No name
+> collides with the live-streaming jobs, so the migrations' unschedule-by-name step touched none of the four.
+> Six jobs now run every minute.
+
+## Realtime publication (`supabase_realtime`)
+
+**None of migrations 01–06 adds a table to `supabase_realtime`.** Each file leaves the step as a
+commented-out, optional line, to be run only if the app picks Supabase Realtime `postgres_changes` as the
+transport for that signal (the spec says pick ONE transport per signal, do not mix):
+
+| table | commented-out in | would carry |
+|---|---|---|
+| `live_stream_reaction_counts` | 02 (§7b) | the running heart/reaction total |
+| `lk_battle_end_requests` | 03 | the host's Accept/Decline popup for a co-host's "end battle" request |
+| `live_cohost_sessions` | 03 | the invitee's co-host Accept/Decline popup and the 50/50 link/unlink for viewers |
+
+Chat has no table, so there is nothing chat-related to publish; migration 02 also forbids `realtime.send()`
+for chat (it would store every message in `realtime.messages`). The alternative for each row above is a
+broadcast message sent by the client after the matching RPC returns.
+
+**Current contents (read from `pg_publication_tables` on the live DB 2026-09-11):** `public.videos` and
+`public.shorts` only. **No live-streaming table is published.**
+
+## Column-level privileges
+
+Read from `pg_attribute.attacl` on the live DB 2026-09-11 (`public` schema, columns with an explicit ACL):
+
+| table | explicit column grants |
+|---|---|
+| `profiles` | `SELECT` to **`anon` and `authenticated`** on **all 18 columns** (`id` … `notify_new_video_from_tapins`) |
+| `ad_requests` *(web/admin-only)* | `SELECT` to `anon` and `authenticated` on 16 columns (`id`, `company_name`, `website`, `campaign_title`, `campaign_description`, `ad_type`, `creative_url`, `cta_url`, `preferred_start_date`, `duration_days`, `status`, `reviewed_at`, `created_at`, `payment_status`, `target_impressions`, `impressions_count`) |
+| `nowpayments_payments` *(web/admin-only)* | `SELECT` to `authenticated` only, on 20 columns (`id` … `updated_at`) |
+
+No other `public` table — and **none of the 23 live-streaming tables** — has column-level grants; their
+access is table-level `GRANT` + RLS as documented per table.
+> For `profiles` this is the "FIX A" pattern (`supabase_complete_migration.sql`): client reads work
+> because every column is granted individually. A column **added to `profiles` later needs its own
+> `GRANT SELECT (col) … TO anon, authenticated`**, or client queries selecting it (or `*`) will fail.
+> The live-streaming functions read `profiles` (`user_id`, `display_name`, `avatar_url`) only inside
+> SECURITY DEFINER functions owned by `postgres`, so they are unaffected either way.
+
 ## Storage buckets
 
 All six buckets are **public: true** with **no file size limit and no MIME allowlist**.
@@ -2866,3 +2919,47 @@ Flagged rather than silently included or excluded.
    backing column; `wallet_withdrawals.amount` is what the app reads while `create_withdrawal()` only
    writes `amount_srd` (so app-created withdrawals read as `0`); `WalletRow.walletType` uses
    `'bep20_usdt'` while the DB CHECK on `wallet_withdrawals.method` uses `'usdt_bep20'`.
+
+### Live streaming (migrations 01–06)
+
+9. **`live_streams` — the original host UPDATE policy still allows direct writes.** Migration 01 left
+   `"Hosts can update their own live stream"` untouched (non-breaking rule; the website writes `status`).
+   Its only check is `auth.uid() = host_user_id`, so a host can, with a plain PostgREST UPDATE:
+   - set `status = 'ended'` without `live_stream_end()` — open viewer sessions stay open, the
+     `live_stream_runtime` counter is not zeroed, `total_views` / `unique_viewers` / `duration_seconds` /
+     `end_reason` are never computed, and the battle / co-host stream-ended hooks never fire (a live
+     battle then waits for its timer and `lk_battles_settle_due`; a live co-host session stays live until a
+     participant calls `live_cohost_end`). Migration 06
+     partly compensates (`end_reason IS NULL` ⇒ total-views fallback; no stale partner on deep links);
+   - set `status` back to `'live'` on an ended stream (`trg_stream_mod_block_banned_host` only stops
+     platform-banned hosts);
+   - write the 01 metric columns on their own stream (`total_views`, `unique_viewers`,
+     `peak_concurrent_viewers`, `duration_seconds`, `end_reason`, `category_id`) — unlike
+     `live_stream_runtime`, the durable metrics are **not tamper-proof**.
+
+   The mobile app will only use the RPCs, so this is exposure, not a current bug. Closing it (for example
+   a BEFORE UPDATE guard trigger on the metric columns) is a change to an existing shared table and needs
+   explicit permission. **Needs a decision.**
+
+10. **Seven migration-05 functions are granted without a prior `REVOKE`** (marked † in the Migration 05
+    table): `stream_mod_is_moderator`, `stream_mod_mute`, `stream_mod_unmute`,
+    `stream_mod_assign_moderator`, `stream_mod_revoke_moderator`, `stream_mod_report_set_status`,
+    `stream_mod_contains_profanity`. They therefore keep PostgreSQL's default EXECUTE to `PUBLIC` and
+    Supabase's default grant to `anon` — every other client-facing live-streaming function revokes first.
+    Checked against the function bodies: mute/unmute go through `stream_mod_assert_can_act()` (raises
+    `42501` on a NULL actor), assign/revoke raise on `v_actor is null`, `report_set_status` requires admin,
+    and `is_moderator` is granted to `anon` on purpose (policies call it). The only real extra reach is
+    **`stream_mod_contains_profanity()` callable signed-out**, i.e. word-by-word probing of the blocklist
+    (signed-in users can already do this by design). Low risk; a consistency fix would be a
+    `REVOKE … FROM public, anon` follow-up migration. **Confirm whether to add it.**
+
+11. ~~Three live-DB facts unverified~~ — **RESOLVED 2026-09-11** (pulled from the live DB by the user):
+    - **Realtime publication:** only `videos` and `shorts` are published; no live-streaming table is
+      (see *Realtime publication*). The transport for reactions, battle end requests and co-host invites
+      is still an implementation-phase choice.
+    - **Column-level grants:** explicit column ACLs exist only on `profiles` (all 18 columns → `anon`,
+      `authenticated`), `ad_requests` and `nowpayments_payments`; none on any live-streaming table (see
+      *Column-level privileges*). Any future `profiles` column needs its own column grant.
+    - **pg_cron:** 4 pre-existing jobs (`telegram-broadcast-every-minute`, `telegram-poll-every-minute`,
+      `notification-dispatcher-every-minute`, `fx-rate-daily`) + the 3 live-streaming jobs; no name
+      collision (see *pg_cron jobs*). The 4 pre-existing jobs' commands were not pulled.
