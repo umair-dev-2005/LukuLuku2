@@ -2853,6 +2853,30 @@ Other public RPCs exist but are **not** called by the app: `admin_list_creator_f
 2026-09-11 but are **not yet called by any RN code** — the implementation phase is pending. Their
 signatures, security mode and grants are listed per migration in the *LIVE STREAMING* section.
 
+## PENDING — Edge Functions required by live streaming (not written yet)
+
+> **Status (2026-09-11): none of these exist yet.** They are part of the database design's contract
+> but are server code, not SQL: they will be **written during the backend / ZegoCloud integration
+> phase** and **deployed manually by the user** (Supabase CLI `supabase functions deploy <name>` +
+> `supabase secrets set …`, or the Dashboard). They are NOT migrations and are NOT run in the SQL
+> Editor. Pattern to follow: the existing `supabase/functions/delete-account`. Function names below are
+> suggestions; the DB functions they call are exact.
+
+| # | edge function (suggested name) | why the database needs it | DB functions it calls | secrets it needs |
+|---|---|---|---|---|
+| 1 | `zego-token` | ZegoCloud requires a server-issued token to log into a room / publish. Publish only for the stream's host (`live_streams.host_user_id`); join refused if kicked / banned. Per spec 01 the room ID is the stream's `id`, publish stream ID `{id}_host`. | `stream_mod_is_punished`, reads `live_streams`; the app then calls `live_stream_join` / `live_stream_init` | ZegoCloud AppID + ServerSecret |
+| 2 | `live-chat-relay` | **Chat is never stored** (migration 02). Every message must pass the server gate, then be broadcast to the room **from the relay** — never with `realtime.send()` inside Postgres (that would store it in `realtime.messages`). Also sets the pinned message (ZegoCloud room extra info) and sends moderator "remove message" signals, both only for host / moderators. | `stream_mod_chat_gate(p_live_stream_id, p_body)` **called with the sender's JWT**; broadcast `{message_id, sent_at, sender_user_id, body, signature}` only when `allowed = true`; `stream_mod_is_moderator` for pin / remove | ZegoCloud AppID + ServerSecret (if broadcasting via ZegoCloud's server API) |
+| 3 | `coin-purchase-verify` | Coins may only be credited after the store verifies the receipt server-side (migration 04). Must pass the **store-confirmed** product ID; must acknowledge/consume the Google purchase after success. Should also receive store server notifications (Apple App Store Server Notifications, Google RTDN). | client first calls `coin_purchase_record`; this function calls `coin_purchase_mark_verified` / `coin_purchase_mark_failed` (**service_role only**) | Google Play service-account JSON; Apple App Store Server API key / issuer ID; bundle ID `online.lukuluku.app` |
+| 4 | `zego-room-control` | The database records kicks, bans and stream ends, but only ZegoCloud can actually cut a user's connection or close a room. | runs after `stream_mod_kick` / `stream_mod_ban` (kick the target from the room) and after a stream ends through `live_stream_end` / a platform ban / the abandoned-stream cron (close the room) | ZegoCloud AppID + ServerSecret |
+| 5 | `zego-callback` *(optional)* | Receives ZegoCloud room/stream webhooks so a crashed viewer or broadcaster is closed server-side even if the app never reports it (lookup via `idx_live_streams_zego_room`). | `live_stream_leave`, `live_stream_end` | ZegoCloud callback secret |
+
+**May need a small follow-up SQL migration when #3 is written:** store refunds — `coin_purchase_status`
+already has `'refunded'`, but no RPC sets it or claws back coins (policy for coins already spent is an
+open product decision).
+
+**Not needed as Edge Functions:** the three sweeps (`lk_live_force_end_abandoned`,
+`lk_battles_expire_stale`, `lk_battles_settle_due`) already run inside the database via `pg_cron`.
+
 ---
 
 # Excluded as WEB/ADMIN-ONLY
