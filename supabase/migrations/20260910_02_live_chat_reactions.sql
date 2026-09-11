@@ -1,7 +1,7 @@
 -- =====================================================================================
 -- LukuLuku Live Streaming — Migration 02
 -- Feature: Live Reactions + the Live Chat COUNT (chat MESSAGES are never stored)
--- Spec:    specs/02-live-chat-metrics-reactions.md
+-- Spec:    specs/archive/02-live-chat-metrics-reactions.md (archived — outdated, history only)
 -- Scope:   mobile app only (the website does not run live streaming).
 --
 -- -------------------------------------------------------------------------------------

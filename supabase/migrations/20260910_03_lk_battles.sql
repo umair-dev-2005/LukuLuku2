@@ -1,6 +1,6 @@
 -- ============================================================================
 -- Migration 03 of 05 — LK (Luku Knockout) Battles + CO-HOSTING
--- Feature: dual-streamer scored match system (specs/03-lk-battles.md) and co-hosting —
+-- Feature: dual-streamer scored match system (specs/archive/03-lk-battles.md — archived, outdated) and co-hosting —
 --          two live streams linked 50/50 with no timer / score / winner / penalty
 --          (no spec file; flow approved by the user 2026-09-11).
 --

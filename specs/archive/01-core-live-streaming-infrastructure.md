@@ -1,3 +1,16 @@
+> **⚠️ ARCHIVED — OUTDATED SPEC. Do NOT use this file as a reference for UI screens, app code, Edge Functions or database work.**
+>
+> This is the original pre-design spec (archived 2026-09-11). Many decisions changed while the database
+> was designed and verified — e.g. live chat is **never stored**, new LK Battle ending rules, 15-minute
+> kick / 3-stream ban / 7-day platform ban, a 50-gift catalog + 10 coin packages, and co-hosting (not in
+> these specs at all). The **source of truth** is now:
+> `supabase/migrations/20260910_01…06_*.sql`, `APP_SCHEMA_OVERVIEW.md`, and the user's current
+> instructions and screenshots. If this file disagrees with those, this file is wrong.
+>
+> *PURANI file — is se UI ya code na banayein. Kept only as history.*
+
+---
+
 # Feature 1: Core Live Streaming Infrastructure (Broadcaster & Viewer Engine)
 
 Streaming SDK: **ZegoCloud** (RTC publish/playback + room signaling). Only chat/gifts/battles/

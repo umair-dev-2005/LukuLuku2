@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52a212c6-641a-4ef3-9465-b41dca460172" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/specs/archive/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/specs/01-core-live-streaming-infrastructure.md" beforeDir="false" afterPath="$PROJECT_DIR$/specs/archive/01-core-live-streaming-infrastructure.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/specs/02-live-chat-metrics-reactions.md" beforeDir="false" afterPath="$PROJECT_DIR$/specs/archive/02-live-chat-metrics-reactions.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/specs/03-lk-battles.md" beforeDir="false" afterPath="$PROJECT_DIR$/specs/archive/03-lk-battles.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/specs/04-Economy-Virtual-Gifting.md" beforeDir="false" afterPath="$PROJECT_DIR$/specs/archive/04-Economy-Virtual-Gifting.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/specs/5-Feature-Stream-Moderation-Plat.md" beforeDir="false" afterPath="$PROJECT_DIR$/specs/archive/5-Feature-Stream-Moderation-Plat.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

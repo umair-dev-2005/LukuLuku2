@@ -1,7 +1,7 @@
 -- =====================================================================================
 -- LukuLuku Live Streaming — Migration 01 of 05
 -- Feature: Core Live Streaming Infrastructure (Broadcaster & Viewer Engine)
--- Spec:    specs/01-core-live-streaming-infrastructure.md
+-- Spec:    specs/archive/01-core-live-streaming-infrastructure.md (archived — outdated, history only)
 -- Target:  Supabase / PostgreSQL 17
 --
 -- CREATES
