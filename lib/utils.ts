@@ -87,6 +87,17 @@ export function formatDuration(seconds: number | string | null): string {
   return `${mins}:${secs.toString().padStart(2, '0')}`;
 }
 
+// Running live-stream timer: "mm:ss", switching to "h:mm:ss" after the first hour.
+// (formatDuration above has no hours part and treats large values as milliseconds.)
+export function formatLiveDuration(totalSeconds: number): string {
+  const safe = Math.max(0, Math.floor(totalSeconds));
+  const hours = Math.floor(safe / 3600);
+  const mins = Math.floor((safe % 3600) / 60);
+  const secs = safe % 60;
+  const mmss = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  return hours > 0 ? `${hours}:${mmss}` : mmss;
+}
+
 type RankingMeta = {
   title?: string;
   description?: string | null;

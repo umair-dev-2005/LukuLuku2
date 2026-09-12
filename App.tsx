@@ -9,6 +9,7 @@ import { Video, supabase } from './lib/supabase';
 import { isMomentiDuration } from './lib/utils';
 import { requestTrackingPermission } from './lib/tracking';
 import * as Linking from 'expo-linking';
+import type { CameraType } from 'expo-camera';
 
 const HomeScreen = lazy(() => import('./screens/HomeScreen'));
 const ShortsScreen = lazy(() => import('./screens/ShortsScreen'));
@@ -20,6 +21,10 @@ const WebViewScreen = lazy(() => import('./screens/WebViewScreen'));
 const CreateScreen = lazy(() => import('./screens/CreateScreen'));
 const CreatePostScreen = lazy(() => import('./screens/CreatePostScreen'));
 const BangiPostScreen = lazy(() => import('./screens/BangiPostScreen'));
+const LivePreviewScreen = lazy(() => import('./screens/LivePreviewScreen'));
+const LiveBroadcastScreen = lazy(() => import('./screens/LiveBroadcastScreen'));
+const LiveHubScreen = lazy(() => import('./screens/LiveHubScreen'));
+const LiveViewerScreen = lazy(() => import('./screens/LiveViewerScreen'));
 const NotificationsScreen = lazy(() => import('./screens/NotificationsScreen'));
 const GamesScreen = lazy(() => import('./screens/GamesScreen'));
 const GamePlayScreen = lazy(() => import('./screens/GamePlayScreen'));
@@ -37,6 +42,10 @@ type Screen =
   | { type: 'createVideo' }
   | { type: 'createMomenti' }
   | { type: 'createPost' }
+  | { type: 'livePreview' }
+  | { type: 'liveBroadcast'; initialFacing: CameraType; initialMuted: boolean }
+  | { type: 'liveHub' }
+  | { type: 'liveViewer'; streamId: string }
   | { type: 'bangiPost'; postId: string }
   | { type: 'notifications' }
   | { type: 'games' }
@@ -268,6 +277,22 @@ const handleAuthComplete = useCallback(() => {
     navigateTo({ type: 'createPost' });
   }, [navigateTo]);
 
+  const handleGoLivePress = useCallback(() => {
+    navigateTo({ type: 'livePreview' });
+  }, [navigateTo]);
+
+  const handleStartStreaming = useCallback((setup: { facing: CameraType; isMuted: boolean }) => {
+    navigateTo({ type: 'liveBroadcast', initialFacing: setup.facing, initialMuted: setup.isMuted });
+  }, [navigateTo]);
+
+  const handleLiveHubPress = useCallback(() => {
+    navigateTo({ type: 'liveHub' });
+  }, [navigateTo]);
+
+  const handleOpenLiveStream = useCallback((streamId: string) => {
+    navigateTo({ type: 'liveViewer', streamId });
+  }, [navigateTo]);
+
   const handleAdvertisePress = useCallback(() => {
     navigateTo({ type: 'webview', url: LUKULUKU_ADVERTISE_URL, title: t('create.advertise') });
   }, [navigateTo]);
@@ -374,6 +399,7 @@ const handleAuthComplete = useCallback(() => {
             onCreateVideo={handleCreateVideoPress}
             onCreateMomenti={handleCreateMomentiPress}
             onCreatePost={handleCreatePostPress}
+            onGoLive={handleGoLivePress}
             onAdvertise={handleAdvertisePress}
           />
         </Suspense>
@@ -409,6 +435,54 @@ const handleAuthComplete = useCallback(() => {
         <StatusBar barStyle="light-content" backgroundColor={colors.background} />
         <Suspense fallback={<StartupFallback />}>
           <CreatePostScreen onBack={goBack} mode="post" onPublished={refreshContent} />
+        </Suspense>
+      </>
+    );
+  }
+
+  if (screen.type === 'livePreview') {
+    return withAppBoundary(
+      <>
+        <StatusBar barStyle="light-content" backgroundColor="#000000" />
+        <Suspense fallback={<StartupFallback />}>
+          <LivePreviewScreen onBack={goBack} onStartStreaming={handleStartStreaming} />
+        </Suspense>
+      </>
+    );
+  }
+
+  if (screen.type === 'liveBroadcast') {
+    return withAppBoundary(
+      <>
+        <StatusBar barStyle="light-content" backgroundColor="#000000" />
+        <Suspense fallback={<StartupFallback />}>
+          <LiveBroadcastScreen
+            initialFacing={screen.initialFacing}
+            initialMuted={screen.initialMuted}
+            onEndStream={goHome}
+          />
+        </Suspense>
+      </>
+    );
+  }
+
+  if (screen.type === 'liveHub') {
+    return withAppBoundary(
+      <>
+        <StatusBar barStyle="dark-content" backgroundColor={colors.background} />
+        <Suspense fallback={<StartupFallback />}>
+          <LiveHubScreen onBack={goBack} onOpenStream={handleOpenLiveStream} />
+        </Suspense>
+      </>
+    );
+  }
+
+  if (screen.type === 'liveViewer') {
+    return withAppBoundary(
+      <>
+        <StatusBar barStyle="light-content" backgroundColor="#000000" />
+        <Suspense fallback={<StartupFallback />}>
+          <LiveViewerScreen streamId={screen.streamId} onBack={goHome} onExploreMore={goBack} />
         </Suspense>
       </>
     );
@@ -525,6 +599,7 @@ const handleAuthComplete = useCallback(() => {
                 onNotificationsPress={handleNotificationsPress}
                 onGamesPress={handleGamesPress}
                 onLeaderboardsPress={handleLeaderboardsPress}
+                onLiveHubPress={handleLiveHubPress}
                 onPlayGame={handlePlayGame}
                 refreshToken={contentRefreshToken}
                 isActive={activeTab === 'home'}

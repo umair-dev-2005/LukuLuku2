@@ -15,29 +15,41 @@ interface CreateScreenProps {
   onCreateVideo?: () => void;
   onCreateMomenti?: () => void;
   onCreatePost?: () => void;
+  onGoLive?: () => void;
   onAdvertise?: () => void;
 }
 
 const CREATE_OPTIONS = [
   {
+    key: 'uploadVideo' as const,
     icon: 'videocam' as const,
     labelKey: 'create.uploadVideo' as const,
     descKey: 'create.uploadVideoDesc' as const,
     color: colors.primary,
   },
   {
+    key: 'createMomenti' as const,
     icon: 'flash' as const,
     labelKey: 'create.createMomenti' as const,
     descKey: 'create.createMomentiDesc' as const,
     color: '#FF9500',
   },
   {
+    key: 'communityPost' as const,
     icon: 'chatbubble-ellipses' as const,
     labelKey: 'create.communityPost' as const,
     descKey: 'create.communityPostDesc' as const,
     color: '#5856D6',
   },
   {
+    key: 'goLive' as const,
+    icon: 'radio' as const,
+    labelKey: 'create.goLive' as const,
+    descKey: 'create.goLiveDesc' as const,
+    color: colors.tapIn,
+  },
+  {
+    key: 'advertise' as const,
     icon: 'megaphone' as const,
     labelKey: 'create.advertise' as const,
     descKey: 'create.advertiseDesc' as const,
@@ -45,20 +57,24 @@ const CREATE_OPTIONS = [
   },
 ];
 
-export default function CreateScreen({ onBack, onCreateVideo, onCreateMomenti, onCreatePost, onAdvertise }: CreateScreenProps) {
+export default function CreateScreen({ onBack, onCreateVideo, onCreateMomenti, onCreatePost, onGoLive, onAdvertise }: CreateScreenProps) {
   const insets = useSafeAreaInsets();
 
-  const handleOptionPress = (index: number) => {
-    if (index === 0) {
+  const handleOptionPress = (key: typeof CREATE_OPTIONS[number]['key']) => {
+    if (key === 'uploadVideo') {
       onCreateVideo?.();
       return;
     }
-    if (index === 1) {
+    if (key === 'createMomenti') {
       onCreateMomenti?.();
       return;
     }
-    if (index === 2) {
+    if (key === 'communityPost') {
       onCreatePost?.();
+      return;
+    }
+    if (key === 'goLive') {
+      onGoLive?.();
       return;
     }
     onAdvertise?.();
@@ -77,19 +93,19 @@ export default function CreateScreen({ onBack, onCreateVideo, onCreateMomenti, o
 
       {/* Options */}
       <View style={styles.optionsContainer}>
-        {CREATE_OPTIONS.map((option, index) => (
+        {CREATE_OPTIONS.map((option) => (
           <TouchableOpacity
-            key={index}
+            key={option.key}
             style={styles.optionCard}
-            onPress={() => handleOptionPress(index)}
+            onPress={() => handleOptionPress(option.key)}
             activeOpacity={0.7}
           >
             <View style={[styles.optionIcon, { backgroundColor: option.color + '15' }]}>
               <Ionicons name={option.icon} size={28} color={option.color} />
             </View>
             <View style={styles.optionText}>
-              <Text style={styles.optionLabel}>{'label' in option ? option.label : t(option.labelKey as any)}</Text>
-              <Text style={styles.optionDesc}>{'desc' in option ? option.desc : t(option.descKey as any)}</Text>
+              <Text style={styles.optionLabel}>{t(option.labelKey as any)}</Text>
+              <Text style={styles.optionDesc}>{t(option.descKey as any)}</Text>
             </View>
             <Ionicons name="chevron-forward" size={20} color={colors.textTertiary} />
           </TouchableOpacity>

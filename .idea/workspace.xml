@@ -5,12 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="52a212c6-641a-4ef3-9465-b41dca460172" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/specs/archive/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/specs/01-core-live-streaming-infrastructure.md" beforeDir="false" afterPath="$PROJECT_DIR$/specs/archive/01-core-live-streaming-infrastructure.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/specs/02-live-chat-metrics-reactions.md" beforeDir="false" afterPath="$PROJECT_DIR$/specs/archive/02-live-chat-metrics-reactions.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/specs/03-lk-battles.md" beforeDir="false" afterPath="$PROJECT_DIR$/specs/archive/03-lk-battles.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/specs/04-Economy-Virtual-Gifting.md" beforeDir="false" afterPath="$PROJECT_DIR$/specs/archive/04-Economy-Virtual-Gifting.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/specs/5-Feature-Stream-Moderation-Plat.md" beforeDir="false" afterPath="$PROJECT_DIR$/specs/archive/5-Feature-Stream-Moderation-Plat.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CLAUDE.md" beforeDir="false" afterPath="$PROJECT_DIR$/CLAUDE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/i18n.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/i18n.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/CreateScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/CreateScreen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/HomeScreen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/screens/HomeScreen.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,23 +51,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev-branch&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/LukuLuku2/supabase&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "dev-branch",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/LukuLuku2/supabase",
+    "settings.editor.selected.configurable": "com.android.studio.ml.permissions",
+    "show.migrate.to.gradle.popup": "false"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\LukuLuku2\supabase" />

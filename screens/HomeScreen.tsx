@@ -52,6 +52,7 @@ interface HomeScreenProps {
   onNotificationsPress: () => void;
   onGamesPress?: () => void;
   onLeaderboardsPress?: () => void;
+  onLiveHubPress?: () => void;
   onPlayGame?: (gameId: string, gameType: string, gameName: string) => void;
   refreshToken?: number;
   isActive?: boolean;
@@ -94,6 +95,7 @@ function HomeScreen({
   onNotificationsPress,
   onGamesPress,
   onLeaderboardsPress,
+  onLiveHubPress,
   onPlayGame,
   refreshToken = 0,
   isActive = true,
@@ -944,6 +946,14 @@ function HomeScreen({
               <Text style={styles.top100BtnText}>{t('leaderboards.title' as any)}</Text>
             </TouchableOpacity>
           )}
+          {onLiveHubPress && (
+            <TouchableOpacity style={styles.liveTriggerBtn} onPress={onLiveHubPress} activeOpacity={0.75}>
+              <Ionicons name="play" size={16} color={colors.tapIn} />
+              <View style={styles.liveTriggerBadge}>
+                <Text style={styles.liveTriggerBadgeText}>{t('liveHost.live' as any)}</Text>
+              </View>
+            </TouchableOpacity>
+          )}
           <TouchableOpacity style={styles.notificationBtn} onPress={onNotificationsPress}>
             <Ionicons name="notifications-outline" size={24} color={colors.text} />
           </TouchableOpacity>
@@ -1017,6 +1027,32 @@ const styles = StyleSheet.create({
   },
   notificationBtn: {
     padding: spacing.sm,
+  },
+  liveTriggerBtn: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: colors.surfaceLight,
+    borderWidth: 1,
+    borderColor: colors.borderLight,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  liveTriggerBadge: {
+    position: 'absolute',
+    bottom: -6,
+    alignSelf: 'center',
+    backgroundColor: colors.primary,
+    borderRadius: borderRadius.sm,
+    paddingHorizontal: 4,
+    paddingVertical: 1,
+    borderWidth: 1.5,
+    borderColor: colors.background,
+  },
+  liveTriggerBadgeText: {
+    color: '#FFFFFF',
+    fontSize: 7,
+    fontWeight: '800',
   },
   loadingContainer: {
     flex: 1,
